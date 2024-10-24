@@ -9,7 +9,7 @@ class CustomDynamicViewModule : Module() {
 
     View(CustomDynamicView::class) {
       AsyncFunction("addView") { view: CustomDynamicView ->
-        view.addView()
+        view.addCustomView()
       }
     }
   }

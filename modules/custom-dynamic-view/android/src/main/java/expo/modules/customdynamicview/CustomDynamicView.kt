@@ -2,6 +2,7 @@ package expo.modules.customdynamicview
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -18,13 +19,13 @@ class CustomDynamicView(context: Context, appContext: AppContext) : ExpoView(con
         addView(root)
     }
 
-    fun addView() {
+    fun addCustomView() {
         this.post {
             val view = View(context)
             view.layoutParams = ViewGroup.LayoutParams(400, 400)
             view.setBackgroundColor(Color.RED)
             root.addView(view)
+//            Log.d("cmodule", "view added")
         }
     }
 }
-
