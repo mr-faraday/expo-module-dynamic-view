@@ -1,37 +1,31 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { CustomDynamicView } from "@/modules/custom-dynamic-view";
+import * as SplashScreen from "expo-splash-screen";
+import { useRef } from "react";
+import { Button, View } from "react-native";
+import "react-native-reanimated";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+    const ref = useRef();
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+    const handlePress = () => {
+        ref.current?.addView?.();
+    };
 
-  if (!loaded) {
-    return null;
-  }
+    return (
+        <SafeAreaProvider>
+            <View style={{ backgroundColor: "yellow", flex: 1 }}>
+                <SafeAreaView style={{ flex: 1 }}>
+                    <View style={{ padding: 20 }}>
+                        <Button title="Add View" onPress={handlePress} />
+                    </View>
 
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
-  );
+                    <CustomDynamicView ref={ref} style={{ flex: 1 }} />
+                </SafeAreaView>
+            </View>
+        </SafeAreaProvider>
+    );
 }
