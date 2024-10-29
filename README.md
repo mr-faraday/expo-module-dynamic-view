@@ -1,12 +1,18 @@
 # Repreduce behaviour
 
-1. Prebuild project
+1. Install packages
+
+   ```bash
+   npm install
+   ```
+
+2. Prebuild project
 
    ```bash
    npx expo prebuild
    ```
 
-2. Start the app
+3. Start the app
 
    ```bash
     npm run android

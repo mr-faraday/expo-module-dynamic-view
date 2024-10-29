@@ -16,13 +16,9 @@ class CustomDynamicView(context: Context, appContext: AppContext) : ExpoView(con
     init {
         root = LinearLayout(context)
         root.orientation = VERTICAL
-//        root.layoutParams =
-//            ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
         root.layoutParams =
-            ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, 500)
+            ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
         addView(root)
-
-        
 
         val button = Button(context)
         button.layoutParams = ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
@@ -30,7 +26,7 @@ class CustomDynamicView(context: Context, appContext: AppContext) : ExpoView(con
             addCustomView()
         }
 
-        button.text = "adsdfasdf"
+        button.text = "native button"
 
         root.addView(button)
     }
@@ -47,13 +43,5 @@ class CustomView(context: Context) : View(context) {
     init {
         this.layoutParams = ViewGroup.LayoutParams(200, 200)
         this.setBackgroundColor(Color.RED)
-
-        this.post {
-            this.invalidate()
-            this.requestLayout()
-            this.forceLayout()
-            this.layoutParams.width = 300
-            this.layoutParams.height = 300
-        }
     }
 }

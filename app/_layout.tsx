@@ -20,7 +20,7 @@ export default function RootLayout() {
             <View style={{ backgroundColor: "yellow", flex: 1 }}>
                 <SafeAreaView style={{ flex: 1 }}>
                     <View style={{ padding: 20 }}>
-                        <Button title="Add View" onPress={handlePress} />
+                        <Button title="react button" onPress={handlePress} />
                     </View>
 
                     <CustomDynamicView ref={ref} style={{ flex: 1 }} />
